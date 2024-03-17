@@ -17,4 +17,17 @@ export class UsersService {
   getUser(id) {
     return this.usersRepository.findOneBy({id: id});
   }
+
+  createUser(body) {
+    const newUser = this.usersRepository.create(body);
+    return this.usersRepository.save(newUser);
+  }
+
+  updateUser(id: number, body) {
+    return this.usersRepository.update({ id }, body );
+  }
+
+  deleteUser(id: number) {
+    return this.usersRepository.delete({ id });
+  }
 }
