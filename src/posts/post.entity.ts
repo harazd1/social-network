@@ -22,13 +22,9 @@ export class Post {
   @Column("simple-array", { nullable: true })
   tags: string[];
 
-  @ManyToMany(() => User)
+  @ManyToMany(() => User, { cascade: true })
   @JoinTable()
   likedBy: User[];
-
-  get likes(): number {
-    return this.likedBy.length;
-  }
 
   @Column({ nullable: true })
   description: string;
